@@ -1,6 +1,7 @@
 // Vortex Games - Core Application Logic
 
 // 1. Game Database
+// [FIX] 로컬 file:/// 경로 → Unsplash 외부 URL로 전부 교체
 const GAMES_DATA = [
     {
         id: 'neon-shadow',
@@ -12,7 +13,7 @@ const GAMES_DATA = [
         originalPrice: 66000,
         discount: 30,
         price: 46200,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/cyberpunk_1782537874121.jpg',
+        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop',
         description: '디스토피아 미래 도시 네온 시티를 배경으로 펼쳐지는 오픈 월드 액션 RPG입니다. 신체 개조와 첨단 무기로 무장하여 도시 깊은 곳에 숨겨진 메가코퍼레이션의 음모를 폭로하고 자유를 쟁취하세요.',
         features: ['화려한 3D 사이버펑크 네온 그래픽', '자유도 높은 신체 부품 커스터마이징', '멀티 엔딩이 제공되는 방대한 서사', '실시간 메카닉 전투 및 해킹 시스템'],
         reqMin: {
@@ -40,7 +41,7 @@ const GAMES_DATA = [
         originalPrice: 54000,
         discount: 20,
         price: 43200,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/stellar_1782537887037.jpg',
+        image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=600&auto=format&fit=crop',
         description: '광활하고 고독한 우주를 탐험하는 오픈 샌드박스 SF 게임입니다. 행성의 기후와 고대 외계 유적을 탐사하며, 인류의 잃어버린 식민지 우주선을 찾아 떠나는 신비로운 여정을 담았습니다.',
         features: ['절차적 생성 기법으로 탄생한 100만 개 이상의 행성', '디테일한 생존 시스템 (산소, 중력, 방사능)', '자유로운 나만의 탐사 우주선 빌더', '아름답고 몽환적인 미니멀리즘 앰비언트 OST'],
         reqMin: {
@@ -68,7 +69,7 @@ const GAMES_DATA = [
         originalPrice: 78000,
         discount: 0,
         price: 78000,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/elden_1782537897535.jpg',
+        image: 'https://images.unsplash.com/photo-1547026375-b8c87f973e85?q=80&w=600&auto=format&fit=crop',
         description: '다크 판타지 세계관을 무대로 하는 고난도 액션 어드벤처 RPG입니다. 무너진 왕국의 마지막 전사가 되어 붉은 달이 드리운 성의 저주를 풀고 봉인된 태고의 힘을 소환해 왕국의 군주들을 물리치세요.',
         features: ['하드코어 소울라이크 전투 메커니즘', '다양한 마법과 거대한 양손 검 빌드 최적화', '기괴하면서도 수려한 다크 판타지 오픈월드', '거대하고 무자비한 보스 레이드 전투'],
         reqMin: {
@@ -96,7 +97,7 @@ const GAMES_DATA = [
         originalPrice: 24000,
         discount: 50,
         price: 12000,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/woods_1782537908992.jpg',
+        image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop',
         description: '바쁜 일상에서 벗어나 따뜻하고 아기자기한 힐링을 선사하는 탐험 게임입니다. 배낭을 멘 꼬마 여우 전사가 되어 신비로운 버섯 숲의 수수께끼를 해결하고, 숲속 친구들과 우정을 쌓아보세요.',
         features: ['지브리 스타일의 고품질 카툰 렌더링 아트', '전투 스트레스가 없는 평화로운 퍼즐과 낚시 콘텐츠', '감성을 자극하는 어쿠스틱 악기 중심 사운드트랙', '나만의 오두막 데코레이션 및 정원 가꾸기'],
         reqMin: {
@@ -124,7 +125,7 @@ const GAMES_DATA = [
         originalPrice: 15000,
         discount: 10,
         price: 13500,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/stellar_1782537887037.jpg',
+        image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=600&auto=format&fit=crop',
         description: '스텔라 오디세이 본편을 확장하는 공식 대규모 확장 팩입니다. 심연의 해저 기지와 외계 문명과의 조우, 새로운 기지 방어 타워 디펜스 모드가 추가됩니다.',
         features: ['새로운 가상 해양 행성 아쿠아리스 개방', '잠수정 조종 및 심해 기지 건설 모드', '외계 거대 해수 몹 추가', '12종의 신규 기지 방어 무기 탑재'],
         reqMin: {
@@ -152,7 +153,7 @@ const GAMES_DATA = [
         originalPrice: 35000,
         discount: 40,
         price: 21000,
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/cyberpunk_1782537874121.jpg',
+        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop',
         description: '네온 섀도우 유니버스를 배경으로 펼쳐지는 극도의 스피디한 5v5 하이테크 하이퍼 슈팅 게임입니다. 나노 아머 슈트를 착용하고 월런, 대시, 순간이동 스킬을 사용해 상대 팀을 물리치세요.',
         features: ['벽을 타는 파쿠르 이동과 하이퍼 대시 기술', '클래스별 특화된 강력한 궁극기 시스템', '커스텀 룰을 자랑하는 e스포츠 경쟁 랭크 모드', '매 시즌 제공되는 다채로운 스킨과 무기 코스메틱'],
         reqMin: {
@@ -173,27 +174,28 @@ const GAMES_DATA = [
 ];
 
 // Featured games in Hero Carousel
+// [FIX] 로컬 이미지 경로 → 외부 URL
 const FEATURED_GAMES = [
     {
         id: 'elden-shadow',
         tag: '인기 판타지 RPG',
         title: '엘덴 섀도우',
         desc: '태고의 붉은 달의 힘을 지배하고 저주받은 영주의 성을 탈환하세요. 소울라이크 사상 최고의 자유로운 보스 처단 액션을 선보입니다.',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/elden_1782537897535.jpg'
+        image: 'https://images.unsplash.com/photo-1547026375-b8c87f973e85?q=80&w=1200&auto=format&fit=crop'
     },
     {
         id: 'neon-shadow',
         tag: '신작 SF 액션 RPG',
         title: '네온 섀도우: 사이버펑크',
         desc: '해킹과 나노 강화 신체로 디스토피아 기업들의 기밀을 강탈하세요. 네온 빛으로 화려하게 물든 오픈 월드를 종횡무진할 기회입니다.',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/cyberpunk_1782537874121.jpg'
+        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop'
     },
     {
         id: 'stellar-odyssey',
         tag: '추천 샌드박스 SF',
         title: '스텔라 오디세이',
         desc: '고유의 대기와 환경 요소를 가진 거대한 우주의 비밀 속으로. 외계 식민지선 잔해를 탐사하고 미지의 기술력을 흡수하세요.',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/stellar_1782537887037.jpg'
+        image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1200&auto=format&fit=crop'
     }
 ];
 
@@ -202,10 +204,13 @@ let cart = [];
 let currentFilter = 'all';
 let currentSearch = '';
 let currentSort = 'popular';
-let currentPromoDiscount = 0; // 0 to 1
+let currentPromoDiscount = 0;
 let activeCarouselIndex = 0;
 let carouselTimer = null;
 let activeTab = 'store';
+
+// [FIX] launcher interval을 전역으로 관리 → 닫힐 때 확실히 정리
+let launcherInterval = null;
 
 // New Owned Games (Library Database)
 let ownedGames = [
@@ -214,6 +219,7 @@ let ownedGames = [
 ];
 
 // Prepopulated Community Posts Feed
+// [FIX] 커뮤니티 포스트 이미지도 외부 URL로 교체
 let communityPosts = [
     {
         id: 1,
@@ -224,7 +230,7 @@ let communityPosts = [
         tagId: 'elden-shadow',
         title: '엘덴 섀도우 최종 보스 붉은 달의 폭군 공략!',
         desc: '드디어 32번째 도전 만에 클리어했습니다! 팁을 좀 드리자면 2페이즈 광폭화 때 거리를 너무 벌리면 돌진 패턴 유도가 자주 돼서 힘드니, 오히려 가까이 붙어서 구르기로 뒤를 잡는 편이 공격 기회를 훨씬 많이 벌어다 줍니다. 무기는 메카닉 레이저 양손검 9강 필수예요!',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/elden_1782537897535.jpg',
+        image: 'https://images.unsplash.com/photo-1547026375-b8c87f973e85?q=80&w=700&auto=format&fit=crop',
         likes: 42,
         likedByUser: false
     },
@@ -237,7 +243,7 @@ let communityPosts = [
         tagId: 'stellar-odyssey',
         title: '스텔라 오디세이 행성 착륙 성공 샷! 행성 뷰 끝내주네요',
         desc: '탐사선 개조하고 산소 보급 기지 대충 세우고 나니까 해질녘 하늘 색감이 완전히 예술입니다... 우주 SF 게임 좋아하는 분들이라면 무조건 추천합니다. 앰비언트 사운드 트랙 켜놓고 멍하게 풍경 보고만 있어도 대만족이에요.',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/stellar_1782537887037.jpg',
+        image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=700&auto=format&fit=crop',
         likes: 29,
         likedByUser: false
     },
@@ -250,7 +256,7 @@ let communityPosts = [
         tagId: 'whispering-woods',
         title: '속삭이는 숲 무지개 송어 낚시 포인트 추천!',
         desc: '중앙 맵 버섯 폭포 우측 큰 바위 쪽으로 바짝 찌를 던지면 무지개 송어가 잡힐 확률이 80% 이상입니다! 오두막 벽지 도감 완성하려면 무지개 송어 5마리가 필요한데 여기서 다 낚으세요. 낚시할 때 배경에 나타나는 꼬마 요정들도 너무 귀여워요.',
-        image: 'file:///C:/Users/USER/.gemini/antigravity/brain/4e0e3bc1-3ac5-43aa-9ebd-dc0a50be4fe9/woods_1782537908992.jpg',
+        image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=700&auto=format&fit=crop',
         likes: 18,
         likedByUser: false
     }
@@ -270,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function switchTab(tabName) {
     activeTab = tabName;
     
-    // Update active nav links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         if (link.getAttribute('data-tab') === tabName) {
@@ -280,7 +285,6 @@ function switchTab(tabName) {
         }
     });
     
-    // Update visible view sections
     const sections = document.querySelectorAll('.view-section');
     sections.forEach(sec => {
         if (sec.id === `${tabName}-view`) {
@@ -292,7 +296,6 @@ function switchTab(tabName) {
         }
     });
     
-    // Header actions hide/show adjustments
     const searchBar = document.querySelector('.search-bar');
     if (tabName === 'store') {
         searchBar.style.opacity = '1';
@@ -302,7 +305,6 @@ function switchTab(tabName) {
         searchBar.style.pointerEvents = 'none';
     }
     
-    // Reset page scroll position
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -460,7 +462,7 @@ function renderGameGrid() {
     });
 }
 
-// 7. Interactive Detail Modal (with Compact Tabs)
+// 7. Interactive Detail Modal
 function openGameDetails(gameId) {
     const game = GAMES_DATA.find(g => g.id === gameId);
     if (!game) return;
@@ -486,18 +488,14 @@ function openGameDetails(gameId) {
 
     content.innerHTML = `
         <div class="detail-modal-grid">
+            <!-- 왼쪽: 메인 이미지만 -->
             <div class="detail-gallery">
                 <div class="detail-main-img-wrapper">
                     <img src="${game.image}" alt="${game.title}" class="detail-main-img" id="modal-main-image" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop'">
                 </div>
-                <div class="detail-thumbnails">
-                    <img src="${game.image}" alt="썸네일 1" class="detail-thumb active" onclick="changeModalImage(this, '${game.image}')">
-                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=300&auto=format&fit=crop" alt="썸네일 2" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop')">
-                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=300&auto=format&fit=crop" alt="썸네일 3" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop')">
-                    <img src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=300&auto=format&fit=crop" alt="썸네일 4" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=800&auto=format&fit=crop')">
-                </div>
             </div>
             
+            <!-- 오른쪽: 정보 + 가격 + 썸네일 순서 -->
             <div class="detail-info">
                 <div>
                     <span class="detail-category">${game.category.toUpperCase()} // ${game.genres.join(' & ')}</span>
@@ -509,7 +507,6 @@ function openGameDetails(gameId) {
                     </div>
                 </div>
                 
-                <!-- Inner Modal Tab System -->
                 <div class="detail-tabs-nav">
                     <button class="detail-tab-btn active" data-detail-tab="about">게임 소개</button>
                     <button class="detail-tab-btn" data-detail-tab="reqs">시스템 사양</button>
@@ -547,17 +544,25 @@ function openGameDetails(gameId) {
                     </div>
                 </div>
                 
+                <!-- [FIX] 가격/버튼: margin-top:auto 제거 → 설명 바로 아래 고정 -->
                 <div class="detail-price-box">
                     ${priceHTML}
                     <button class="detail-buy-btn" onclick="addToCartDirect('${game.id}'); closeModal('detail-modal');">
                         <i class="fa-solid fa-cart-shopping"></i> 장바구니 추가
                     </button>
                 </div>
+
+                <!-- [FIX] 썸네일: 갤러리에서 이동 → 가격 박스 아래 -->
+                <div class="detail-thumbnails">
+                    <img src="${game.image}" alt="썸네일 1" class="detail-thumb active" onclick="changeModalImage(this, '${game.image}')">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=300&auto=format&fit=crop" alt="썸네일 2" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=300&auto=format&fit=crop" alt="썸네일 3" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=300&auto=format&fit=crop" alt="썸네일 4" class="detail-thumb" onclick="changeModalImage(this, 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=800&auto=format&fit=crop')">
+                </div>
             </div>
         </div>
     `;
     
-    // Bind Tab Switching Events
     const tabBtns = content.querySelectorAll('.detail-tab-btn');
     tabBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -593,7 +598,6 @@ function addToCartDirect(gameId) {
     const game = GAMES_DATA.find(g => g.id === gameId);
     if (!game) return;
     
-    // Check if user already owns this game
     const ownsGame = ownedGames.some(item => item.id === gameId);
     if (ownsGame) {
         showToast(`이미 라이브러리에 보유 중인 게임입니다!`, 'info');
@@ -685,7 +689,7 @@ function applyPromoCode() {
             showToast('이미 프로모션 코드가 적용되었습니다.', 'info');
             return;
         }
-        currentPromoDiscount = 0.20; // 20% discount
+        currentPromoDiscount = 0.20;
         updateCartUI();
         showToast('20% 할인 프로모션 코드가 적용되었습니다!', 'success');
         input.value = '';
@@ -750,7 +754,6 @@ function processCheckout(event) {
     document.getElementById('success-order-id').textContent = randomOrderId;
     document.getElementById('success-email-text').textContent = `전송받을 메일: ${emailInput}`;
     
-    // Add bought items to library
     cart.forEach(game => {
         const alreadyOwned = ownedGames.some(item => item.id === game.id);
         if (!alreadyOwned) {
@@ -766,13 +769,11 @@ function processCheckout(event) {
     closeModal('checkout-modal');
     openModal('success-modal');
     
-    // Reset Cart
     cart = [];
     currentPromoDiscount = 0;
     document.getElementById('checkout-form').reset();
     updateCartUI();
     
-    // Re-render library list to reflect new games
     renderLibraryGrid();
 }
 
@@ -849,6 +850,7 @@ function launchGameSim(gameId) {
     progressEl.style.width = '0%';
     statusTextEl.textContent = 'BOOTING SEQUENCES INITIALIZED...';
     percentEl.textContent = '0%';
+    percentEl.style.color = '';
     stopBtn.style.display = 'none';
     
     openModal('launcher-modal');
@@ -868,32 +870,30 @@ function launchGameSim(gameId) {
     
     let progress = 0;
     let logIndex = 0;
-    
-    // Simulate terminal logs and progress loader bar
-    const interval = setInterval(() => {
-        // Increment progress
+
+    // [FIX] 전역 launcherInterval 사용 → 외부에서도 정리 가능
+    launcherInterval = setInterval(() => {
         progress += Math.floor(Math.random() * 8) + 3;
         if (progress > 100) progress = 100;
         
         progressEl.style.width = `${progress}%`;
         percentEl.textContent = `${progress}%`;
         
-        // Print message logs periodically
         if (logIndex < logMessages.length && progress >= (logIndex * 9)) {
             const line = document.createElement('div');
             line.textContent = `> ${logMessages[logIndex]}`;
             logEl.appendChild(line);
-            logEl.scrollTop = logEl.scrollHeight; // Scroll down console
+            logEl.scrollTop = logEl.scrollHeight;
             logIndex++;
         }
         
-        // Update states at milestones
         if (progress >= 30 && progress < 70) {
             statusTextEl.textContent = 'LOADING GAME ASSETS...';
         } else if (progress >= 70 && progress < 100) {
             statusTextEl.textContent = 'VERIFYING SYSTEM DRIVERS...';
         } else if (progress === 100) {
-            clearInterval(interval);
+            clearInterval(launcherInterval);
+            launcherInterval = null;
             statusTextEl.textContent = 'GAME RUNNING (ACTIVE)';
             percentEl.textContent = 'RUNNING';
             percentEl.style.color = '#00ff87';
@@ -907,13 +907,13 @@ function launchGameSim(gameId) {
             
             stopBtn.style.display = 'block';
             
-            // Randomly increase achievement & playtime statistics in library after play session simulation finishes
             updatePlayTimeOnClose(gameId);
         }
     }, 150);
     
-    // Close / Exit button setup
     stopBtn.onclick = () => {
+        clearInterval(launcherInterval);
+        launcherInterval = null;
         closeModal('launcher-modal');
         showToast(`'${game.title}' 게임 실행이 정상 종료되었습니다.`, 'info');
         renderLibraryGrid();
@@ -923,7 +923,6 @@ function launchGameSim(gameId) {
 function updatePlayTimeOnClose(gameId) {
     const libItem = ownedGames.find(g => g.id === gameId);
     if (libItem) {
-        // add random gameplay stats simulation
         libItem.playtime += parseFloat((Math.random() * 2 + 0.1).toFixed(1));
         libItem.lastPlayed = '방금 전';
         if (libItem.achievement < 100) {
@@ -942,7 +941,6 @@ function renderCommunityFeed() {
         const card = document.createElement('article');
         card.className = 'post-card';
         
-        // Like active state class helper
         const likeClass = post.likedByUser ? 'liked' : '';
         const likeIcon = post.likedByUser ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
         
@@ -1008,7 +1006,7 @@ function handleCreatePost(event) {
         const game = GAMES_DATA.find(g => g.id === gameId);
         if (game) {
             gameTagText = game.title;
-            gameImg = game.image; // attach game cover image as reference for aesthetic richness
+            gameImg = game.image;
         }
     }
     
@@ -1026,10 +1024,8 @@ function handleCreatePost(event) {
         likedByUser: false
     };
     
-    // Insert new post at the top of the feed array
     communityPosts.unshift(newPost);
     
-    // Clear inputs
     titleInput.value = '';
     contentInput.value = '';
     gameSelect.value = 'general';
@@ -1046,14 +1042,12 @@ function toggleFAQAccordion(e) {
     
     const isActive = item.classList.contains('active');
     
-    // Collapse all other accordions first
     const allItems = document.querySelectorAll('.faq-item');
     allItems.forEach(i => {
         i.classList.remove('active');
         i.querySelector('.faq-panel').style.maxHeight = null;
     });
     
-    // Toggle clicked item
     if (!isActive) {
         item.classList.add('active');
         panel.style.maxHeight = panel.scrollHeight + 'px';
@@ -1071,7 +1065,6 @@ function handleTicketForm(event) {
     
     showToast('기술 지원 티켓이 정상적으로 서버에 등록되었습니다.', 'success');
     
-    // Simulate auto email responder toast
     setTimeout(() => {
         showToast(`[Vortex 지원] '${category}' 관련 접수증이 ${email}로 발송되었습니다.`, 'info');
     }, 1500);
@@ -1122,9 +1115,11 @@ function showToast(message, type = 'info') {
     }, 4000);
 }
 
+// [FIX] 카드 번호 포맷터 정규식 수정: /\d{4,16}/g → /\d{1,16}/g
+// 기존 코드는 4자리 미만 입력 시 공백 처리가 되지 않는 문제가 있었음
 function formatCardNumber(e) {
     let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    let matches = value.match(/\d{4,16}/g);
+    let matches = value.match(/\d{1,16}/g);
     let match = (matches && matches[0]) || '';
     let parts = [];
     for (let i = 0, len = match.length; i < len; i += 4) {
@@ -1140,7 +1135,6 @@ function formatExpiry(e) {
 
 // 14. Event Listeners Init
 function initEventListeners() {
-    // Navigation Tabs Router Links
     const tabs = document.querySelectorAll('.nav-links .nav-link');
     tabs.forEach(t => {
         t.addEventListener('click', (e) => {
@@ -1150,21 +1144,17 @@ function initEventListeners() {
         });
     });
     
-    // Brand logo returns to Store tab
     document.getElementById('nav-logo').addEventListener('click', (e) => {
         e.preventDefault();
         switchTab('store');
     });
     
-    // Cart open/close drawer
     document.getElementById('cart-toggle-btn').addEventListener('click', openCartDrawer);
     document.getElementById('cart-close-btn').addEventListener('click', closeCartDrawer);
     document.getElementById('cart-overlay').addEventListener('click', closeCartDrawer);
     
-    // Cart promo code
     document.getElementById('promo-apply-btn').addEventListener('click', applyPromoCode);
     
-    // Store Game Grid Filters
     document.getElementById('game-search-input').addEventListener('input', (e) => {
         currentSearch = e.target.value;
         renderGameGrid();
@@ -1185,30 +1175,23 @@ function initEventListeners() {
         renderGameGrid();
     });
     
-    // Cart checkout button trigger
     document.getElementById('cart-checkout-btn').addEventListener('click', openCheckoutModal);
     
-    // Checkout payment form
     document.getElementById('checkout-form').addEventListener('submit', processCheckout);
     
-    // Community Post Creation
     document.getElementById('community-post-form').addEventListener('submit', handleCreatePost);
     
-    // Support FAQ Accordions click triggers
     const faqTriggers = document.querySelectorAll('.faq-trigger');
     faqTriggers.forEach(trigger => trigger.addEventListener('click', toggleFAQAccordion));
     
-    // Support Tech Support Form ticket submit
     document.getElementById('support-ticket-form').addEventListener('submit', handleTicketForm);
     
-    // Checkout Modal inputs styling/formatter helpers
     document.getElementById('card-number').addEventListener('input', formatCardNumber);
     document.getElementById('card-expiry').addEventListener('input', formatExpiry);
     document.getElementById('card-cvc').addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/[^0-9]/g, '');
     });
     
-    // Modal window controls
     document.getElementById('detail-close-btn').addEventListener('click', () => closeModal('detail-modal'));
     document.getElementById('detail-modal').addEventListener('click', (e) => {
         if (e.target === document.getElementById('detail-modal')) closeModal('detail-modal');
@@ -1230,28 +1213,36 @@ function initEventListeners() {
         }
     });
 
+    // [FIX] launcher-close-btn: interval 정리 + renderLibraryGrid 호출 추가
     document.getElementById('launcher-close-btn').addEventListener('click', () => {
+        clearInterval(launcherInterval);
+        launcherInterval = null;
         closeModal('launcher-modal');
         renderLibraryGrid();
     });
     document.getElementById('launcher-modal').addEventListener('click', (e) => {
         if (e.target === document.getElementById('launcher-modal')) {
+            clearInterval(launcherInterval);
+            launcherInterval = null;
             closeModal('launcher-modal');
             renderLibraryGrid();
         }
     });
     
+    // [FIX] ESC 키에도 interval 정리 추가
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+            clearInterval(launcherInterval);
+            launcherInterval = null;
             closeModal('detail-modal');
             closeModal('checkout-modal');
             closeModal('success-modal');
             closeModal('launcher-modal');
             closeCartDrawer();
+            renderLibraryGrid();
         }
     });
     
-    // Hero carousel controls
     document.getElementById('hero-prev-btn').addEventListener('click', () => {
         let prevIndex = (activeCarouselIndex - 1 + FEATURED_GAMES.length) % FEATURED_GAMES.length;
         setCarouselSlide(prevIndex);
