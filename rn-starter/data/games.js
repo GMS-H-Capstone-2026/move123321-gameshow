@@ -8,10 +8,28 @@ export const GAMES_DATA = [
     originalPrice: 66000,
     discount: 30,
     price: 46200,
+    releaseYear: 2026,
+    badge: '신규',
     image:
       'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop',
     description:
       '디스토피아 미래 도시 네온 시티를 배경으로 펼쳐지는 오픈 월드 액션 RPG입니다. 신체 개조와 첨단 무기로 무장하여 메가코퍼레이션의 음모를 폭로하세요.',
+  },
+  {
+    id: 'car',
+    title: '자동차 경주',
+    category: 'simulator',
+    genres: ['시뮬레이터'],
+    rating: 4.2,
+    originalPrice: 32000,
+    discount: 36,
+    price: 21000,
+    releaseYear: 2026,
+    badge: '인기',
+    image:
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop',
+    description:
+      '자동차 경쟁 시뮬레이터 게임',
   },
   {
     id: 'stellar-odyssey',
@@ -22,6 +40,8 @@ export const GAMES_DATA = [
     originalPrice: 54000,
     discount: 20,
     price: 43200,
+    releaseYear: 2026,
+    badge: '추천',
     image:
       'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=600&auto=format&fit=crop',
     description:
@@ -36,6 +56,8 @@ export const GAMES_DATA = [
     originalPrice: 78000,
     discount: 0,
     price: 78000,
+    releaseYear: 2024,
+    badge: '인기',
     image:
       'https://images.unsplash.com/photo-1547026375-b8c87f973e85?q=80&w=600&auto=format&fit=crop',
     description:
@@ -50,6 +72,8 @@ export const GAMES_DATA = [
     originalPrice: 24000,
     discount: 50,
     price: 12000,
+    releaseYear: 2025,
+    badge: '추천',
     image:
       'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop',
     description:
@@ -64,6 +88,8 @@ export const GAMES_DATA = [
     originalPrice: 15000,
     discount: 10,
     price: 13500,
+    releaseYear: 2026,
+    badge: '신규',
     image:
       'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=600&auto=format&fit=crop',
     description:
@@ -78,6 +104,8 @@ export const GAMES_DATA = [
     originalPrice: 35000,
     discount: 40,
     price: 21000,
+    releaseYear: 2025,
+    badge: '인기',
     image:
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop',
     description:

@@ -12,6 +12,12 @@ export function GameCard({ game, isInCart, onPress, onAddToCart }) {
         </View>
       )}
 
+       {game.discount > 0 && (
+        <View style={styles.badgeBadge}>
+          <Text style={styles.badgeText}>{game.badge}</Text>
+        </View>
+      )}
+
       <View style={styles.body}>
         <Text style={styles.genre} numberOfLines={1}>
           {game.genres.join(' / ')}
@@ -25,7 +31,7 @@ export function GameCard({ game, isInCart, onPress, onAddToCart }) {
             <Ionicons name="star" size={14} color="#facc15" />
             <Text style={styles.ratingText}>{game.rating.toFixed(1)}</Text>
           </View>
-          <Text style={styles.price}>₩{game.price.toLocaleString()}</Text>
+          <Text style={styles.originalPrice}> {game.originalPrice.toLocaleString()}</Text> <Text style={styles.price}>₩{game.price.toLocaleString()}</Text>
         </View>
 
         <Pressable
@@ -38,7 +44,7 @@ export function GameCard({ game, isInCart, onPress, onAddToCart }) {
             color={isInCart ? '#95a3b3' : '#06111f'}
           />
           <Text style={[styles.cartButtonText, isInCart && styles.cartButtonTextDisabled]}>
-            {isInCart ? '담김' : '담기'}
+            {isInCart ? '담김' : '구매'}
           </Text>
         </Pressable>
       </View>
@@ -48,8 +54,8 @@ export function GameCard({ game, isInCart, onPress, onAddToCart }) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#101827',
-    borderColor: '#223044',
+    backgroundColor: '#5e6ad2',
+    borderColor: '#5e69d1',
     borderRadius: 8,
     borderWidth: 1,
     flex: 1,
@@ -57,9 +63,23 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    backgroundColor: '#182235',
+    backgroundColor: '#828fff',
     height: 118,
     width: '100%',
+  },
+  badgeBadge: {
+    backgroundColor: '#fb335e',
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    position: 'absolute',
+    right:60,
+    top: 8,
+  },
+  badgeText: {
+    color: '#ffffff',
+    fontSize: 12,
+    fontWeight: '900',
   },
   discountBadge: {
     backgroundColor: '#fb335e',
@@ -106,6 +126,11 @@ const styles = StyleSheet.create({
     color: '#d7e0ea',
     fontSize: 13,
     fontWeight: '800',
+  },
+  originalPrice: {
+    color: '#808080',
+    fontSize: 13,
+    fontWeight: '1000',
   },
   price: {
     color: '#ffffff',

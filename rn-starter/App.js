@@ -23,6 +23,7 @@ const categories = [
   { label: '어드벤처', value: 'adventure' },
   { label: 'SF/우주', value: 'scifi' },
   { label: '인디', value: 'indie' },
+  { label: '시뮬레이터', value: 'simulator'},
 ];
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
       const matchesSearch =
         keyword.length === 0 ||
         game.title.toLowerCase().includes(keyword) ||
+        game.description.toLowerCase().includes(keyword) ||
         game.genres.some((genre) => genre.toLowerCase().includes(keyword));
 
       return matchesCategory && matchesSearch;
@@ -149,7 +151,7 @@ export default function App() {
                 <Image source={{ uri: selectedGame.image }} style={styles.modalImage} />
                 <Text style={styles.modalTitle}>{selectedGame.title}</Text>
                 <Text style={styles.modalMeta}>
-                  {selectedGame.genres.join(' / ')} · 평점 {selectedGame.rating}
+                  {selectedGame.genres.join(' / ')} · 평점 {selectedGame.rating} · 출시년도 {selectedGame.releaseYear}
                 </Text>
                 <Text style={styles.modalDescription}>{selectedGame.description}</Text>
                 <View style={styles.modalActions}>
