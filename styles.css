@@ -230,14 +230,23 @@ body {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 1;
     display: flex;
     align-items: center;
 }
 
+.carousel-slide:first-child {
+    position: relative;
+}
+
 .carousel-slide.active {
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 1;
     visibility: visible;
+    z-index: 2;
 }
 
 .carousel-bg {
@@ -583,18 +592,39 @@ body {
     transform: translateY(0);
 }
 
-.discount-badge {
+.card-badge-stack {
     position: absolute;
     top: 0.8rem;
     left: 0.8rem;
-    background: var(--accent);
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    z-index: 10;
+}
+
+.card-badge {
     font-weight: 800;
     font-size: 0.85rem;
     padding: 0.3rem 0.6rem;
     border-radius: 4px;
-    z-index: 10;
+}
+
+.discount-badge {
+    background: var(--accent);
+    color: #fff;
     box-shadow: 0 4px 10px rgba(255, 0, 85, 0.3);
+}
+
+.free-badge {
+    background: #00f0b5;
+    color: #071511;
+    box-shadow: 0 4px 10px rgba(0, 240, 181, 0.35);
+}
+
+.new-badge {
+    background: #ffd54a;
+    color: #221600;
+    box-shadow: 0 4px 10px rgba(255, 213, 74, 0.35);
 }
 
 .card-info {
@@ -1155,6 +1185,20 @@ detail-price-box {
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
 
+.detail-free-pill {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(0, 240, 181, 0.14);
+    border: 1px solid rgba(0, 240, 181, 0.3);
+    color: #7effdc;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
 .detail-buy-btn {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: #fff;
@@ -1300,6 +1344,25 @@ detail-price-box {
 .checkout-modal-content button,
 .checkout-modal-content a {
     margin-top: 15px;
+}
+
+.info-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.info-modal-body p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.info-modal-body strong {
+    color: var(--text-main);
 }
 
 .checkout-container {

@@ -10,6 +10,7 @@ const GAMES_DATA = [
         genres: ['RPG', '액션'],
         rating: 4.8,
         platforms: ['windows', 'playstation', 'xbox'],
+        releaseDate: '2026-03-14',
         originalPrice: 66000,
         discount: 30,
         price: 46200,
@@ -38,6 +39,7 @@ const GAMES_DATA = [
         genres: ['SF/우주', '어드벤처'],
         rating: 4.7,
         platforms: ['windows', 'playstation'],
+        releaseDate: '2025-11-02',
         originalPrice: 54000,
         discount: 20,
         price: 43200,
@@ -66,6 +68,7 @@ const GAMES_DATA = [
         genres: ['RPG', '액션', '어드벤처'],
         rating: 4.9,
         platforms: ['windows', 'playstation', 'xbox'],
+        releaseDate: '2024-08-23',
         originalPrice: 78000,
         discount: 0,
         price: 78000,
@@ -94,6 +97,7 @@ const GAMES_DATA = [
         genres: ['인디', '어드벤처'],
         rating: 4.5,
         platforms: ['windows', 'playstation', 'xbox', 'switch'],
+        releaseDate: '2026-01-17',
         originalPrice: 24000,
         discount: 50,
         price: 12000,
@@ -122,6 +126,7 @@ const GAMES_DATA = [
         genres: ['SF/우주', '인디'],
         rating: 4.6,
         platforms: ['windows', 'playstation'],
+        releaseDate: '2026-05-28',
         originalPrice: 15000,
         discount: 10,
         price: 13500,
@@ -144,12 +149,42 @@ const GAMES_DATA = [
         }
     },
     {
+        id: 'orbital-echoes-online',
+        title: '오비탈 에코즈 온라인',
+        category: 'scifi',
+        genres: ['SF/우주', '액션', '무료 플레이'],
+        rating: 4.3,
+        platforms: ['windows', 'playstation', 'xbox'],
+        releaseDate: '2026-06-30',
+        originalPrice: 0,
+        discount: 0,
+        price: 0,
+        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop',
+        description: '우주 정거장과 소행성 지대를 무대로 펼쳐지는 팀 기반 온라인 액션 게임입니다. 빠른 매치메이킹과 시즌 이벤트를 통해 누구나 무료로 전장에 뛰어들 수 있습니다.',
+        features: ['무료 플레이 기반의 6대6 우주 전투', '시즌 패스와 주간 이벤트 보상 시스템', '함선 클래스별 역할 분담과 팀 전술 플레이', '크로스 플랫폼 매치메이킹 지원'],
+        reqMin: {
+            os: 'Windows 10 64-bit',
+            cpu: 'Intel Core i5-6500 / AMD Ryzen 3 1300X',
+            ram: '8 GB RAM',
+            gpu: 'NVIDIA GeForce GTX 960 / AMD Radeon RX 570',
+            storage: '28 GB 사용 가능 공간'
+        },
+        reqRec: {
+            os: 'Windows 10/11 64-bit',
+            cpu: 'Intel Core i5-10400 / AMD Ryzen 5 3600',
+            ram: '16 GB RAM',
+            gpu: 'NVIDIA GeForce RTX 2060 / AMD Radeon RX 6600 XT',
+            storage: '28 GB SSD 사용 가능 공간'
+        }
+    },
+    {
         id: 'neon-shadow-multi',
         title: '네온 섀도우: 아레나 쇼다운',
         category: 'action',
         genres: ['액션'],
         rating: 4.4,
         platforms: ['windows', 'playstation', 'xbox'],
+        releaseDate: '2025-09-19',
         originalPrice: 35000,
         discount: 40,
         price: 21000,
@@ -211,6 +246,9 @@ let activeTab = 'store';
 
 // [FIX] launcher interval을 전역으로 관리 → 닫힐 때 확실히 정리
 let launcherInterval = null;
+
+const LATEST_RELEASE_TIMESTAMP = Math.max(...GAMES_DATA.map(game => new Date(game.releaseDate).getTime()));
+const NEW_RELEASE_WINDOW_DAYS = 180;
 
 // New Owned Games (Library Database)
 let ownedGames = [
@@ -308,6 +346,65 @@ function switchTab(tabName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function syncCategoryTags(category) {
+    const catTags = document.querySelectorAll('.category-tag');
+    catTags.forEach(tag => {
+        tag.classList.toggle('active', tag.getAttribute('data-category') === category);
+    });
+}
+
+function openStoreCatalog(options = {}) {
+    const {
+        category = 'all',
+        sort = 'popular',
+        search = '',
+        toastMessage = ''
+    } = options;
+
+    switchTab('store');
+    currentFilter = category;
+    currentSort = sort;
+    currentSearch = search;
+
+    const searchInput = document.getElementById('game-search-input');
+    const sortDropdown = document.getElementById('catalog-sort');
+
+    if (searchInput) {
+        searchInput.value = search;
+    }
+
+    if (sortDropdown) {
+        sortDropdown.value = sort;
+    }
+
+    syncCategoryTags(category);
+    renderGameGrid();
+
+    const catalogSection = document.getElementById('store-catalog');
+    if (catalogSection) {
+        catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (toastMessage) {
+        showToast(toastMessage, 'info');
+    }
+}
+
+function openInfoModal(title, bodyHTML) {
+    document.getElementById('info-modal-title').textContent = title;
+    document.getElementById('info-modal-body').innerHTML = bodyHTML;
+    openModal('info-modal');
+}
+
+function openSupportCenter() {
+    switchTab('support');
+
+    const supportSection = document.querySelector('.support-section');
+    if (supportSection) {
+        supportSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
 // 5. Hero Carousel Logic
 function initHeroCarousel() {
     const container = document.getElementById('hero-carousel');
@@ -363,16 +460,17 @@ function setCarouselSlide(index) {
     activeCarouselIndex = index;
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-    
-    slides.forEach((slide, i) => {
-        if (i === index) slide.classList.add('active');
-        else slide.classList.remove('active');
-    });
-    
-    indicators.forEach((indicator, i) => {
-        if (i === index) indicator.classList.add('active');
-        else indicator.classList.remove('active');
-    });
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+
+    if (slides[index]) {
+        slides[index].classList.add('active');
+    }
+
+    if (indicators[index]) {
+        indicators[index].classList.add('active');
+    }
     
     startCarouselAutoPlay();
 }
@@ -394,6 +492,8 @@ function renderGameGrid() {
         filteredGames.sort((a, b) => b.rating - a.rating);
     } else if (currentSort === 'rating') {
         filteredGames.sort((a, b) => b.rating - a.rating);
+    } else if (currentSort === 'newest') {
+        filteredGames.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
     } else if (currentSort === 'price-asc') {
         filteredGames.sort((a, b) => a.price - b.price);
     } else if (currentSort === 'price-desc') {
@@ -416,6 +516,7 @@ function renderGameGrid() {
         const card = document.createElement('article');
         card.className = 'game-card';
         card.setAttribute('data-id', game.id);
+        const isNewRelease = (LATEST_RELEASE_TIMESTAMP - new Date(game.releaseDate).getTime()) <= NEW_RELEASE_WINDOW_DAYS * 24 * 60 * 60 * 1000;
         
         const platformIcons = game.platforms.map(plat => {
             if (plat === 'windows') return '<i class="fa-brands fa-windows" title="Windows PC"></i>';
@@ -424,16 +525,28 @@ function renderGameGrid() {
             if (plat === 'switch') return '<i class="fa-solid fa-gamepad" title="Nintendo Switch"></i>';
             return '';
         }).join(' ');
-        
-        const discountHTML = game.discount > 0 ? `<div class="discount-badge">-${game.discount}%</div>` : '';
+
+        const badges = [];
+        if (game.price === 0) {
+            badges.push('<div class="card-badge free-badge">FREE</div>');
+        } else if (game.discount > 0) {
+            badges.push(`<div class="card-badge discount-badge">-${game.discount}%</div>`);
+        }
+        if (isNewRelease) {
+            badges.push('<div class="card-badge new-badge">NEW</div>');
+        }
+
+        const badgeHTML = badges.length > 0
+            ? `<div class="card-badge-stack">${badges.join('')}</div>`
+            : '';
         const priceHTML = game.discount > 0 
             ? `<span class="price-original">₩${game.originalPrice.toLocaleString()}</span><span class="price-current">₩${game.price.toLocaleString()}</span>` 
-            : `<span class="price-current">₩${game.price.toLocaleString()}</span>`;
+            : `<span class="price-current ${game.price === 0 ? 'free' : ''}">${game.price === 0 ? '무료' : `₩${game.price.toLocaleString()}`}</span>`;
             
         card.innerHTML = `
             <div class="card-img-wrapper">
                 <img src="${game.image}" alt="${game.title}" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop'">
-                ${discountHTML}
+                ${badgeHTML}
                 <div class="card-overlay-btn">
                     <button class="overlay-view-details">상세 보기</button>
                 </div>
@@ -483,7 +596,7 @@ function openGameDetails(gameId) {
              <span class="detail-price-current">₩${game.price.toLocaleString()}</span>
            </div>`
         : `<div class="detail-price-wrapper">
-             <span class="detail-price-current">₩${game.price.toLocaleString()}</span>
+             <span class="detail-price-current ${game.price === 0 ? 'free' : ''}">${game.price === 0 ? '무료' : `₩${game.price.toLocaleString()}`}</span>
            </div>`;
 
     content.innerHTML = `
@@ -505,6 +618,7 @@ function openGameDetails(gameId) {
                         <div class="detail-stars">${starsHTML}</div>
                         <span>(${game.rating.toFixed(1)} / 5.0)</span>
                     </div>
+                    ${game.price === 0 ? '<div class="detail-free-pill">무료 플레이</div>' : ''}
                 </div>
                 
                 <div class="detail-tabs-nav">
@@ -1115,6 +1229,66 @@ function showToast(message, type = 'info') {
     }, 4000);
 }
 
+function initFooterLinks() {
+    document.getElementById('footer-link-bestsellers').addEventListener('click', (e) => {
+        e.preventDefault();
+        openStoreCatalog({ sort: 'rating' });
+    });
+
+    document.getElementById('footer-link-new-releases').addEventListener('click', (e) => {
+        e.preventDefault();
+        openStoreCatalog({ sort: 'newest' });
+    });
+
+    document.getElementById('footer-link-free-games').addEventListener('click', (e) => {
+        e.preventDefault();
+        openStoreCatalog({ sort: 'price-asc' });
+    });
+
+    document.getElementById('footer-link-discounts').addEventListener('click', (e) => {
+        e.preventDefault();
+        openStoreCatalog({ sort: 'discount' });
+    });
+
+    document.getElementById('footer-link-support').addEventListener('click', (e) => {
+        e.preventDefault();
+        openSupportCenter();
+    });
+
+    document.getElementById('footer-link-about').addEventListener('click', (e) => {
+        e.preventDefault();
+        openInfoModal(
+            '회사 소개',
+            `
+                <p><strong>VORTEX</strong>는 차세대 게이머를 위한 디지털 게임 스토어 경험을 목표로 설계된 인터랙티브 쇼케이스입니다.</p>
+                <p>빠른 탐색, 몰입형 캐러셀, 커뮤니티 허브, 지원 센터를 하나의 흐름으로 연결하는 데 집중했습니다.</p>
+            `
+        );
+    });
+
+    document.getElementById('footer-link-privacy').addEventListener('click', (e) => {
+        e.preventDefault();
+        openInfoModal(
+            '개인정보 처리방침',
+            `
+                <p>이 데모에서는 결제 및 지원 입력값을 실제 서버에 저장하지 않으며, 화면 내 시뮬레이션 목적으로만 사용합니다.</p>
+                <p><strong>실서비스 전환 시</strong> 수집 항목, 보관 기간, 제3자 제공 여부를 별도 정책 문서로 명확히 고지해야 합니다.</p>
+            `
+        );
+    });
+
+    document.getElementById('footer-link-terms').addEventListener('click', (e) => {
+        e.preventDefault();
+        openInfoModal(
+            '이용 약관',
+            `
+                <p>VORTEX 데모의 콘텐츠와 결제 흐름은 학습 및 시연용 UI이며, 실제 라이선스 판매 계약을 구성하지 않습니다.</p>
+                <p><strong>실서비스 적용 시</strong> 구매, 환불, 계정 제재, 콘텐츠 이용 범위를 포함한 정식 약관 페이지를 제공해야 합니다.</p>
+            `
+        );
+    });
+}
+
 // [FIX] 카드 번호 포맷터 정규식 수정: /\d{4,16}/g → /\d{1,16}/g
 // 기존 코드는 4자리 미만 입력 시 공백 처리가 되지 않는 문제가 있었음
 function formatCardNumber(e) {
@@ -1185,6 +1359,7 @@ function initEventListeners() {
     faqTriggers.forEach(trigger => trigger.addEventListener('click', toggleFAQAccordion));
     
     document.getElementById('support-ticket-form').addEventListener('submit', handleTicketForm);
+    initFooterLinks();
     
     document.getElementById('card-number').addEventListener('input', formatCardNumber);
     document.getElementById('card-expiry').addEventListener('input', formatExpiry);
@@ -1228,6 +1403,13 @@ function initEventListeners() {
             renderLibraryGrid();
         }
     });
+
+    document.getElementById('info-close-btn').addEventListener('click', () => closeModal('info-modal'));
+    document.getElementById('info-modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('info-modal')) {
+            closeModal('info-modal');
+        }
+    });
     
     // [FIX] ESC 키에도 interval 정리 추가
     window.addEventListener('keydown', (e) => {
@@ -1238,6 +1420,7 @@ function initEventListeners() {
             closeModal('checkout-modal');
             closeModal('success-modal');
             closeModal('launcher-modal');
+            closeModal('info-modal');
             closeCartDrawer();
             renderLibraryGrid();
         }

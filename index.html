@@ -87,6 +87,7 @@
                             <select id="catalog-sort" class="sort-dropdown">
                                 <option value="popular">추천순</option>
                                 <option value="rating">평점순</option>
+                                <option value="newest">신규 출시순</option>
                                 <option value="price-asc">가격: 낮은 순</option>
                                 <option value="price-desc">가격: 높은 순</option>
                                 <option value="discount">할인율순</option>
@@ -508,17 +509,17 @@
             <div class="footer-links-container">
                 <div class="footer-link-group">
                     <h4>카테고리</h4>
-                    <a href="#">베스트셀러</a>
-                    <a href="#">신규 출시</a>
-                    <a href="#">무료 게임</a>
-                    <a href="#">할인 게임</a>
+                    <a href="#" id="footer-link-bestsellers">베스트셀러</a>
+                    <a href="#" id="footer-link-new-releases">신규 출시</a>
+                    <a href="#" id="footer-link-free-games">무료 게임</a>
+                    <a href="#" id="footer-link-discounts">할인 게임</a>
                 </div>
                 <div class="footer-link-group">
                     <h4>지원 및 회사</h4>
-                    <a href="#">고객 지원</a>
-                    <a href="#">회사 소개</a>
-                    <a href="#">개인정보 처리방침</a>
-                    <a href="#">이용 약관</a>
+                    <a href="#" id="footer-link-support">고객 지원</a>
+                    <a href="#" id="footer-link-about">회사 소개</a>
+                    <a href="#" id="footer-link-privacy">개인정보 처리방침</a>
+                    <a href="#" id="footer-link-terms">이용 약관</a>
                 </div>
             </div>
             
@@ -544,6 +545,14 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal-overlay" id="info-modal">
+        <div class="modal-content checkout-modal-content">
+            <button class="close-btn modal-close" id="info-close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="info-modal-title">안내</h3>
+            <div id="info-modal-body" class="info-modal-body"></div>
+        </div>
+    </div>
 
     <!-- Custom JS -->
     <script src="app.js"></script>
